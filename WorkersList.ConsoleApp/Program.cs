@@ -5,7 +5,7 @@ namespace WorkersList.ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello world!");
+            //Console Application to Make Some Operations with EF Core
         }
     }
 }

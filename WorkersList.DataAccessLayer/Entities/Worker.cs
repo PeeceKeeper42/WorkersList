@@ -4,7 +4,6 @@
     {
         public Worker()
         {
-            Departments = new HashSet<Department>();
             Reviews = new HashSet<Review>();
             Comments = new HashSet<Comment>();
         }
@@ -17,8 +16,9 @@
         public DateTimeOffset DateOfEmployment { get; set; }
         public DateTimeOffset LastModifyInfoDate { get; set; }
 
-        //Many to many Workers - Departments
-        public ICollection<Department> Departments { get; set; }
+        //One to many Department - Workers
+        public Department Department { get; set; }
+        public int DepartmentId { get; set; }
 
         //One to one Worker - Password
         public WorkerPassword WorkerPassword { get; set; }

@@ -6,7 +6,7 @@
         {
             Workers = new HashSet<Worker>();
             Reviews = new HashSet<Review>();
-        }  
+        }
         
         public int Id { get; set; }
         public string Name { get; set; }

@@ -10,7 +10,7 @@
         public string Title { get; set; }
         public string Text { get; set; }
         public int Liked { get; set; }
-        public int Disiked { get; set; }
+        public int Disliked { get; set; }
         public DateTimeOffset LastModifyInfoDate { get; set; }
 
         //One to many Department - Reviews

@@ -4,9 +4,9 @@ using WorkersList.DataAccessLayer.Entities;
 
 namespace WorkersList.DataAccessLayer.Configurations
 {
-    public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
+    public class CommentConfiguration : IEntityTypeConfiguration<Comment>
     {
-        public void Configure(EntityTypeBuilder<Department> entityTypeBuilder)
+        public void Configure(EntityTypeBuilder<Comment> entityTypeBuilder)
         {
             /*
                 Fields
@@ -15,14 +15,14 @@ namespace WorkersList.DataAccessLayer.Configurations
                 .IsRequired()
                 .ValueGeneratedOnAdd();
 
-            entityTypeBuilder.Property(x => x.Name)
+            entityTypeBuilder.Property(x => x.Text)
                 .IsRequired()
-                .HasMaxLength(100);
+                .HasMaxLength(100);//move to restriction file
 
-            entityTypeBuilder.Property(x => x.HeadOfDepartmentId)
+            entityTypeBuilder.Property(x => x.Liked)
                 .IsRequired();
 
-            entityTypeBuilder.Property(x => x.ResponsibilityArea)
+            entityTypeBuilder.Property(x => x.Disliked)
                 .IsRequired();
 
             entityTypeBuilder.Property(x => x.LastModifyInfoDate)
@@ -32,10 +32,10 @@ namespace WorkersList.DataAccessLayer.Configurations
                 Connections
             */
             entityTypeBuilder
-                .HasMany(x => x.Reviews)
-                .WithOne(x => x.Department)
-                .HasForeignKey(x => x.DepartmentId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(x => x.ParentComment)
+                .WithMany(x => x.Comments)
+                .HasForeignKey(x => x.ParentCommentId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

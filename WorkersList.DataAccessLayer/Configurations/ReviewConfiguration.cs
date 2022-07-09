@@ -41,7 +41,7 @@ namespace WorkersList.DataAccessLayer.Configurations
                 .HasMany(x => x.Comments)
                 .WithOne(x => x.Review)
                 .HasForeignKey(x => x.ReviewId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

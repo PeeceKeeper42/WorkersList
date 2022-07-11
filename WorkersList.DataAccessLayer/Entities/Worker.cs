@@ -23,7 +23,7 @@
         //One to one Worker - Password
         public WorkerPassword WorkerPassword { get; set; }
 
-        //One to many Worker - Reviews
+        //Many to many Worker - Reviews
         public ICollection<Review> Reviews { get; set; }
 
         //One to Many Worker - Comments

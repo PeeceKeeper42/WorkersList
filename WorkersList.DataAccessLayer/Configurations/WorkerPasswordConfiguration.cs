@@ -23,6 +23,11 @@ namespace WorkersList.DataAccessLayer.Configurations
             /*
                 Connections
             */
+            entityTypeBuilder
+                .HasOne(x => x.Worker)
+                .WithOne(x => x.WorkerPassword)
+                .HasForeignKey<Worker>(x => x.Id)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

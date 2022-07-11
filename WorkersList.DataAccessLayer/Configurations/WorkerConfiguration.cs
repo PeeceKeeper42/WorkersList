@@ -49,29 +49,29 @@ namespace WorkersList.DataAccessLayer.Configurations
             /*
                 Connections
             */
+            
             entityTypeBuilder
                 .HasOne(x => x.Department)
                 .WithMany(x => x.Workers)
                 .HasForeignKey(x => x.DepartmentId)
-                .OnDelete(DeleteBehavior.NoAction);
-
+                .OnDelete(DeleteBehavior.SetNull);
+            
             entityTypeBuilder
                 .HasMany(x => x.Reviews)
-                .WithOne(x => x.Worker)
-                .HasForeignKey(x => x.WorkerId)
-                .OnDelete(DeleteBehavior.NoAction);
-
+                .WithMany(x => x.Workers)
+                .UsingEntity(x => x.ToTable("WorkersReviews"));
+            
             entityTypeBuilder
                 .HasMany(x => x.Comments)
                 .WithOne(x => x.Worker)
                 .HasForeignKey(x => x.WorkerId)
-                .OnDelete(DeleteBehavior.NoAction);
-
+                .OnDelete(DeleteBehavior.SetNull);
+            
             entityTypeBuilder
                 .HasOne(x => x.WorkerPassword)
                 .WithOne(x => x.Worker)
                 .HasForeignKey<WorkerPassword>(x => x.WorkerId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

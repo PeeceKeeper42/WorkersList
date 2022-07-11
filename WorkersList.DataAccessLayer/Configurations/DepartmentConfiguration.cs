@@ -36,6 +36,7 @@ namespace WorkersList.DataAccessLayer.Configurations
                 .WithOne(x => x.Department)
                 .HasForeignKey(x => x.DepartmentId)
                 .OnDelete(DeleteBehavior.NoAction);
+            
         }
     }
 }

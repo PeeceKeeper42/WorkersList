@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WorkersList.DataAccessLayer.Entities;
+using WorkersList.DataAccessLayer.Configurations;
 
 namespace WorkersList.DataAccessLayer.Contexts
 {
@@ -24,6 +25,8 @@ namespace WorkersList.DataAccessLayer.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            //Not only WorkerConfiguration, but all types of configurations in project
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(WorkerConfiguration).Assembly);
         }
     }
 }

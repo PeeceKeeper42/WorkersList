@@ -67,7 +67,7 @@ namespace WorkersList.DataAccessLayer.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("WorkerId")
+                    b.Property<int?>("WorkerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -165,7 +165,7 @@ namespace WorkersList.DataAccessLayer.Migrations
                         .HasColumnType("datetimeoffset")
                         .HasDefaultValueSql("getdate()");
 
-                    b.Property<int>("DepartmentId")
+                    b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
@@ -257,18 +257,17 @@ namespace WorkersList.DataAccessLayer.Migrations
                     b.HasOne("WorkersList.DataAccessLayer.Entities.Comment", "ParentComment")
                         .WithMany("Comments")
                         .HasForeignKey("ParentCommentId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("WorkersList.DataAccessLayer.Entities.Review", "Review")
                         .WithMany("Comments")
                         .HasForeignKey("ReviewId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("WorkersList.DataAccessLayer.Entities.Worker", "Worker")
                         .WithMany("Comments")
                         .HasForeignKey("WorkerId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("ParentComment");
 
@@ -293,8 +292,7 @@ namespace WorkersList.DataAccessLayer.Migrations
                     b.HasOne("WorkersList.DataAccessLayer.Entities.Department", "Department")
                         .WithMany("Workers")
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.SetNull)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("WorkersList.DataAccessLayer.Entities.WorkerPassword", "WorkerPassword")
                         .WithOne("Worker")

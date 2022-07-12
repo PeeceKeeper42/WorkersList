@@ -18,7 +18,7 @@
 
         //One to many Department - Workers
         public Department Department { get; set; }
-        public int DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         //One to one Worker - Password
         public WorkerPassword WorkerPassword { get; set; }

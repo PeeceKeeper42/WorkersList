@@ -14,7 +14,7 @@
 
         //One to Many Worker - Comments
         public Worker Worker { get; set; }
-        public int WorkerId { get; set; }
+        public int? WorkerId { get; set; }
 
         //One to Many Review - Comments
         public Review Review { get; set; }

@@ -78,7 +78,7 @@ namespace WorkersList.DataAccessLayer.Migrations
 
                     b.HasIndex("WorkerId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("WorkersList.DataAccessLayer.Entities.Department", b =>
@@ -108,7 +108,7 @@ namespace WorkersList.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("WorkersList.DataAccessLayer.Entities.Review", b =>
@@ -151,7 +151,7 @@ namespace WorkersList.DataAccessLayer.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("WorkersList.DataAccessLayer.Entities.Worker", b =>
@@ -210,7 +210,7 @@ namespace WorkersList.DataAccessLayer.Migrations
                     b.HasIndex("Email")
                         .IsUnique();
 
-                    b.ToTable("Workers");
+                    b.ToTable("Workers", (string)null);
                 });
 
             modelBuilder.Entity("WorkersList.DataAccessLayer.Entities.WorkerPassword", b =>
@@ -234,7 +234,7 @@ namespace WorkersList.DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WorkerPasswords");
+                    b.ToTable("WorkerPasswords", (string)null);
                 });
 
             modelBuilder.Entity("ReviewWorker", b =>
